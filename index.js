@@ -1,16 +1,14 @@
-function combine(n, k) {
-  const result = [];
-  backtrack(1, []);
-  return result;
-  function backtrack(start, current) {
-    if (current.length === k) {
-      result.push([...current]);
-      return;
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) minIndex = j;
     }
-    for (let i = start; i <= n; i++) {
-      current.push(i);
-      backtrack(i + 1, current);
-      current.pop();
+    if (minIndex !== i) {
+      let temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
     }
   }
+  return arr;
 }
